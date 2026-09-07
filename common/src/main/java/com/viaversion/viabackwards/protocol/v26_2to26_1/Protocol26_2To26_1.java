@@ -74,9 +74,12 @@ public final class Protocol26_2To26_1 extends BackwardsProtocol<ClientboundPacke
             final String condition = term.getString("condition");
             if (Key.equals(condition, "entity_properties")) {
                 final CompoundTag predicate = term.getCompoundTag("predicate");
-                final Tag typeTag = predicate.remove("entity_type");
-                if (typeTag != null) {
-                    predicate.put("type", typeTag);
+
+                if (predicate != null) {
+                    final Tag typeTag = predicate.remove("entity_type");
+                    if (typeTag != null) {
+                        predicate.put("type", typeTag);
+                    }
                 }
             }
         }
